@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="vn">
+    <head>
+        <meta charset="UTF-8">
+        <title data-nn="ttsanpham">Tất Cả Món Hải Sản</title>
+        <link rel="icon" href="Picture/logo.jpg">      
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="Picture/LogoRestaurant.png">
+    
+        <!--Thư viện boostrap-->
+        <link rel="stylesheet" href="CSS/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+        <!--CSS gõ tay-->
+        <link rel="stylesheet" href="CSS/headermainfooter.css">
+        <link rel="stylesheet" href="donhang_style.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+        <!--Thư viện thay đổi thẻ nav khi thu nhỏ màn hình và thuộc tính của loader-->
+        <script src="https://code.jquery.com/jquery-3.7.1.js"
+            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    
+        <!--Hiển thị giỏ hàng-->
+    
+    </head>
+
+    <body>
+        <!--loader-->
+        <div id='af-preloader'>
+            <div class='af-preloader-wrap'>
+                <div class='af-sp af-sp-wave'></div>
+            </div>
+        </div>
+        <script>
+            $(window).on('load', function () {
+                setTimeout(function () {
+                    $('#af-preloader').fadeOut('slow');
+                }, 500);
+            });
+        </script>
+
+        <!--header-->
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a id="#top" class="navbar-brand" href="trangchu.html">
+                    <img src="Picture/LogoRestaurant.jpg" width="70px" />
+                </a>
+
+                <!--Nút mở thẻ nav khi ở dạng màn hình điện thoại-->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!--Các nav điều hướng-->
+                <!--Các nav điều hướng-->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto navbar-items">
+                    <li class="nav-item">
+                        <a class="nav-link" href="trangchu.html" data-nn="trangchu">Trang Chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="gioithieu.html" data-nn="gioithieu">Giới Thiệu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sanpham.html" data-nn="sanpham">Sản Phẩm</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="lienhe.html" data-nn="lienhe">Liên Hệ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tintuc.html" data-nn="tintuc">Tin Tức</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="dangky.html" data-nn="dangky">Đăng Ký</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="dangnhap.html" data-nn="dangnhap">Đăng Nhập</a>
+                    </li>
+                </ul>
+                <!--Form chứa thanh tìm kiếm, điều hướng giỏ hàng và chuyển đổi ngôn ngữ-->
+                <form class="form-inline my-2 my-lg-0" method="get">
+                    <input id="searchInput" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" data-nn="timkiem">Tìm kiếm</button>
+                    <a onclick="move_donhang()"><img src="Picture/giohang.jpg" width="85px"></a>
+                </form>
+            </div>
+
+            </nav>
+        </header>
+
+        <main>            
+            <div id="cart">
+                <h2>Giỏ hàng:</h2>
+                <br>
+                <label>
+                    select all 
+                    <input type="checkbox" class="checkbox" id="check_all" onclick="check_all()">
+                    
+                </label>
+                
+                <table id="CartDetail"> 
+                    <thead>
+                        <th>Chọn</th>
+                        <th>Hình</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Đơn giá</th>
+                        <th>Số lượng</th>
+                        <th>Giá</th>
+                        <th>Xóa</th>
+                    </thead>
+                    <tbody id="tbdy">
+                    </tbody>
+                </table>
+                
+            </div>
+            <aside >  
+                <h2>Thông tin đơn hàng:</h2>              
+                <div id="count">
+                </div>
+                </aside>
+            </aside>
+
+            <aside>
+
+            </aside>
+        </main>
+
+        <footer>
+            <nav class="navbar navbar-light">
+                <a class="navbar-brand" href="trangchu.html">
+                    <img src="Picture/LogoRestaurant.jpg" width="70px">
+                </a>
+                <p id="company" class="navbar-brand">© Nhà Hàng Hải Sản 2024 <br>
+                Dc: hẻm 51, đường 3 Tháng 2, Hưng Lợi, Ninh Kiều, TP. Cần Thơ</p>
+            </nav>
+        </footer>
+        <script src="JS/sanpham.js"></script>
+        <script src="JS/dathang.js"></script>
+        
+    </body>
+</html>
